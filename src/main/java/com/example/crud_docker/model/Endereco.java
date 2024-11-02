@@ -1,33 +1,34 @@
 package com.example.crud_docker.model;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
+
 
 @Entity
 @Getter
 @Setter
-public class Cliente {
+public class Endereco {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column
-    private String nome;
+    private String rua;
 
     @Column
-    private String idade;
+    private String cidade;
 
     @Column
-    private LocalDate dataNasci;
+    private String estado;
 
     @Column
-    private String sexo;
+    private Cliente cliente;
 
     @Column
     private LocalDateTime dataCadastro;

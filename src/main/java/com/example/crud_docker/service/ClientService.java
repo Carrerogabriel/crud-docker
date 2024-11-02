@@ -22,19 +22,20 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
-    public Cliente alterar(Long id, Cliente changed) {
+    public Cliente alterar(Long id, Cliente alterado) {
         Optional<Cliente> encontrado = clientRepository.findById(id);
         if(encontrado.isPresent()){
-            Cliente client = encontrado.get();
-            client.setNome(changed.getNome());
-            client.setIdade(changed.getIdade());
-            client.setDataNasci(changed.getDataNasci());
+            Cliente cliente = encontrado.get();
+            cliente.setNome(alterado.getNome());
+            cliente.setIdade(alterado.getIdade());
+            cliente.setDataNasci(alterado.getDataNasci());
+            cliente.setSexo(alterado.getSexo());
+            cliente.setDataCadastro(alterado.getDataCadastro());
 
-            return clientRepository.save(client);
+            return clientRepository.save(cliente);
         }
         return null;
     }
-
 
     public void remover(Long id) {clientRepository.deleteById(id);
 

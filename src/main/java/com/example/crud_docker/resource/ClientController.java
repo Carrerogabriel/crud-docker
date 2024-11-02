@@ -19,7 +19,7 @@ public class ClientController {
     @PostMapping()
     public ResponseEntity salvar(@RequestBody Cliente client){
         Cliente save = clientService.salvar(client);
-        return ResponseEntity.created(URI.create("/quadra/salvar" + client.getId())).body(save);
+        return ResponseEntity.created(URI.create("/cliente/salvar" + client.getId())).body(save);
     }
 
     @GetMapping
