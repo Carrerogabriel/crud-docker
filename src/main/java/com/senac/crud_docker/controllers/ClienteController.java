@@ -1,10 +1,11 @@
-package br.backend.crud.controllers;
+package com.senac.crud_docker.controllers;
 
-import br.backend.crud.dtos.cliente.ClienteLoginDTO;
-import br.backend.crud.dtos.cliente.ClienteRequestDTO;
-import br.backend.crud.dtos.cliente.ClienteResponseDTO;
-import br.backend.crud.dtos.token.TokenResponseDTO;
-import br.backend.crud.services.ClienteService;
+
+import com.senac.crud_docker.dtos.cliente.ClienteLoginDTO;
+import com.senac.crud_docker.dtos.cliente.ClienteRequestDTO;
+import com.senac.crud_docker.dtos.cliente.ClienteResponseDTO;
+import com.senac.crud_docker.dtos.token.TokenResponseDTO;
+import com.senac.crud_docker.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

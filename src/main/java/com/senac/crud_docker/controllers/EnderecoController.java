@@ -1,8 +1,8 @@
-package br.backend.crud.controllers;
+package com.senac.crud_docker.controllers;
 
-import br.backend.crud.dtos.endereco.EnderecoResponseDTO;
-import br.backend.crud.models.Endereco;
-import br.backend.crud.services.EnderecoService;
+import com.senac.crud_docker.dtos.endereco.EnderecoResponseDTO;
+import com.senac.crud_docker.models.Endereco;
+import com.senac.crud_docker.service.EnderecoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

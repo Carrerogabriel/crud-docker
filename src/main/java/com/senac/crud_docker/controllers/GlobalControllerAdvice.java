@@ -1,24 +1,34 @@
-package br.backend.crud.controllers;
+package com.senac.crud_docker.controllers;
 
-import br.backend.crud.dtos.endereco.EnderecoResponseDTO;
-import br.backend.crud.models.Endereco;
-import br.backend.crud.services.EnderecoService;
-import lombok.RequiredArgsConstructor;
+import com.senac.crud_docker.exception.NotFoundException;
+import com.senac.crud_docker.exception.ValidationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-@RestController
-@RequestMapping("/endereco")
-@RequiredArgsConstructor
-public class EnderecoController {
+import java.util.HashMap;
+import java.util.Map;
 
-    private final EnderecoService enderecoService;
+@ControllerAdvice
+public class GlobalControllerAdvice {
 
-    @PostMapping("/create")
-    public ResponseEntity<EnderecoResponseDTO> create(@RequestBody Endereco endereco){
-        return ResponseEntity.status(201).body(enderecoService.create(endereco));
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<Map<String, String>> handleNotFoundException404(
+            ValidationException ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("erro", ex.getMessage());
+        return ResponseEntity.status(422).body(errors);
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNotFoundException404(
+            NotFoundException ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("erro", ex.getMessage());
+        return ResponseEntity.status(404).body(errors);
     }
 }
