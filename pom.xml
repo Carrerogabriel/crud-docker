@@ -8,11 +8,11 @@
 		<version>3.3.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.senac</groupId>
 	<artifactId>crud-docker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>crud-docker</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Prática SpringBoot</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -53,6 +53,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-crypto</artifactId>
+			<version>6.3.3</version>
 		</dependency>
 	</dependencies>
 
