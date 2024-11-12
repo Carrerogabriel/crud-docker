@@ -1,7 +1,7 @@
-package com.example.crud_docker.resource;
+package com.senac.crud_docker.resource;
 
-import com.example.crud_docker.exception.NotFoundException;
-import com.example.crud_docker.exception.ValidationException;
+import com.senac.crud_docker.exception.NotFoundException;
+import com.senac.crud_docker.exception.ValidationException;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.example.crud_docker.exception;
+package com.senac.crud_docker.exception;
 
 public class NotFoundException extends RuntimeException{
 
