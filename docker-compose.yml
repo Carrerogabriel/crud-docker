@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres
+    container_name: crud_docker-pgsql
+    restart: always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=crud_docker
+    ports:
+      - '5432:5432'
+
+  backend:
+    container_name: crud_docker-java
+    build: /docker/java/
+    ports:
+      - '8081:8080'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://psql-db:5432/crud_docker
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    depends_on:
+      - db
