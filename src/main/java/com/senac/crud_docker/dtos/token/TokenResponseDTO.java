@@ -1,4 +1,4 @@
-package br.backend.crud.dtos.token;
+package com.senac.crud_docker.dtos.token;
 
 public record TokenResponseDTO(
         String token,
