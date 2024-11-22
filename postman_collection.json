@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "28b2dc98-3b35-449f-be94-4a033f76fbe1",
+		"name": "Prática c/ JWT, SpringBoot & Docker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30920641"
+	},
+	"item": [
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "Criar cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Autenticado com sucesso\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"login\", jsonData.login);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"lucas\",\r\n    \"sobrenome\": \"teste\",\r\n    \"email\": \"teste@teste.com\",\r\n    \"sexo\": \"MASCULINO\",\r\n    \"dataNascimento\": \"2005-05-26\",\r\n    \"senha\": \"1233\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_api}}clientes",
+							"host": [
+								"{{base_url_api}}clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Autenticado com sucesso\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"pm.environment.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste@teste.com\",\r\n    \"senha\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_api}}usuarios/entrar",
+							"host": [
+								"{{base_url_api}}usuarios"
+							],
+							"path": [
+								"entrar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "endereços",
+			"item": [
+				{
+					"name": "Criar endereço",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rua\": \"Pereira\",\r\n    \"bairo\": \"da Silva\",\r\n    \"cidade\": \"Criciúma\",\r\n    \"uf\": \"sc\",\r\n    \"cliente\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url_api}}enderecos",
+							"host": [
+								"{{base_url_api}}enderecos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}health",
+					"host": [
+						"{{base_url}}health"
+					]
+				},
+				"description": "Usada para testar aplicação"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080/"
+		},
+		{
+			"key": "base_url_api",
+			"value": "http://localhost:8080/api/",
+			"type": "string"
+		}
+	]
+}
