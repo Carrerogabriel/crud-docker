@@ -1,14 +1,18 @@
 package com.senac.crud_docker.strategy.endereco;
 
+import com.senac.crud_docker.dtos.endereco.EnderecoRequestDTO;
 import com.senac.crud_docker.exception.ValidationException;
 import com.senac.crud_docker.models.Endereco;
+import com.senac.crud_docker.strategy.NewEnderecoStrategy;
 import org.springframework.stereotype.Component;
 
 @Component
 public class EnderecoFieldsValidation implements NewEnderecoStrategy {
 
     @Override
-    public void validate(Endereco endereco) {
+    public void validate(EnderecoRequestDTO requestDTO) {
+        Endereco endereco = EnderecoRequestDTO.EnderecofromEntity(requestDTO);
+
         if (endereco.getRua() == null || endereco.getRua().isEmpty() || endereco.getRua().isBlank()){
             throw new ValidationException("A Rua deve ser informada");
         }
