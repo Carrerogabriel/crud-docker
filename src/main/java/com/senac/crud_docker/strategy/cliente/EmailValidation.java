@@ -3,6 +3,7 @@ package com.senac.crud_docker.strategy.cliente;
 import com.senac.crud_docker.dtos.cliente.ClienteRequestDTO;
 import com.senac.crud_docker.exception.ValidationException;
 import com.senac.crud_docker.repositories.ClienteRepository;
+import com.senac.crud_docker.strategy.NewClienteStrategy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
