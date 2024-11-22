@@ -30,10 +30,12 @@ public class Endereco extends EntityID {
     public Endereco(String rua,
                     String bairro,
                     String cidade,
-                    String uf) {
+                    String uf,
+                    Cliente cliente) {
         this.rua = rua;
         this.bairro = bairro;
         this.cidade = cidade;
         this.uf = uf;
+        this.cliente = cliente;
     }
 }
