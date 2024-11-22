@@ -14,18 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/api/clientes")
 @RequiredArgsConstructor
 public class ClienteController {
-
     private final ClienteService clienteService;
 
-    @PostMapping("/register")
+    @PostMapping
     public ResponseEntity<ClienteResponseDTO> register(@RequestBody ClienteRequestDTO requestDTO){
         return ResponseEntity.status(201).body(clienteService.create(requestDTO));
     }
 
-    @PostMapping("/login")
+    @PostMapping("/entrar")
     public ResponseEntity<TokenResponseDTO> login(@RequestBody ClienteLoginDTO loginDTO){
         return ResponseEntity.ok(clienteService.login(loginDTO));
     }
